@@ -14,6 +14,7 @@ env:
 - TWISTED="twisted==18.7.0"
 
 install:
+- chmod 777 osx_install_python.sh
 - ./osx_install_python.sh
 - pip install $TWISTED -e .[tests]
 - pip freeze
