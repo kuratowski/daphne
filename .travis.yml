@@ -33,8 +33,10 @@ jobs:
       env: TWISTED="twisted"
       dist: xenial
       sudo: required
+
     - os: osx
       language: generic
+      python: '3.5'
       env: TWISTED="twisted==18.7.0"
       before_install:
         - eval "$(pyenv init -)"
@@ -43,6 +45,7 @@ jobs:
       sudo: required
     - os: osx
       language: generic
+      python: '3.5'
       env: TWISTED="twisted"
       before_install:
         - eval "$(pyenv init -)"
@@ -51,6 +54,7 @@ jobs:
       sudo: required
     - os: osx
       language: generic
+      python: '3.6'
       env: TWISTED="twisted==18.7.0"
       before_install:
         - eval "$(pyenv init -)"
@@ -59,12 +63,14 @@ jobs:
       sudo: required
     - os: osx
       language: generic
+      python: '3.6'
       env: TWISTED="twisted"
       before_install:
         - eval "$(pyenv init -)"
         - pyenv install 3.6.5
         - pyenv global 3.6.5
       sudo: required
+
     - stage: lint
       install: pip install -U -e .[tests] black pyflakes isort
       script:
