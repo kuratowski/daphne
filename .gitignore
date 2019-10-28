@@ -9,3 +9,4 @@ build/
 .eggs
 test_layer*
 test_consumer*
+.idea/
