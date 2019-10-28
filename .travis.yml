@@ -1,8 +1,5 @@
 sudo: false
 
-os:
-  - linux
-
 language: python
 
 python:
@@ -14,9 +11,6 @@ env:
 - TWISTED="twisted==18.7.0"
 
 install:
-- chmod 777 osx_install_python.sh
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then ./osx_install_python.sh; fi
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then eval "$(pyenv init -)"; fi
 - pip install $TWISTED -e .[tests]
 - pip freeze
 
@@ -41,6 +35,35 @@ jobs:
       sudo: required
     - os: osx
       language: generic
+      env: TWISTED="twisted==18.7.0"
+      before_install:
+        - eval "$(pyenv init -)"
+        - pyenv install 3.5.5
+        - pyenv global 3.5.5
+      sudo: required
+    - os: osx
+      language: generic
+      env: TWISTED="twisted"
+      before_install:
+        - eval "$(pyenv init -)"
+        - pyenv install 3.5.5
+        - pyenv global 3.5.5
+      sudo: required
+    - os: osx
+      language: generic
+      env: TWISTED="twisted==18.7.0"
+      before_install:
+        - eval "$(pyenv init -)"
+        - pyenv install 3.6.5
+        - pyenv global 3.6.5
+      sudo: required
+    - os: osx
+      language: generic
+      env: TWISTED="twisted"
+      before_install:
+        - eval "$(pyenv init -)"
+        - pyenv install 3.6.5
+        - pyenv global 3.6.5
       sudo: required
     - stage: lint
       install: pip install -U -e .[tests] black pyflakes isort
