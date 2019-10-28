@@ -2,7 +2,6 @@ sudo: false
 
 os:
   - linux
-  - osx
 
 language: python
 
@@ -15,6 +14,7 @@ env:
 - TWISTED="twisted==18.7.0"
 
 install:
+- ./osx_install_python.sh
 - pip install $TWISTED -e .[tests]
 - pip freeze
 
@@ -37,7 +37,9 @@ jobs:
       env: TWISTED="twisted"
       dist: xenial
       sudo: required
-
+    - os: osx
+      language: generic
+      sudo: required
     - stage: lint
       install: pip install -U -e .[tests] black pyflakes isort
       script:
