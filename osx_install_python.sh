@@ -5,4 +5,5 @@ if [ $TRAVIS_OS_NAME = 'osx' ]; then
     # pyenv install --list;
     pyenv install 3.6.5;
     pyenv global 3.6.5;
+    pip install --upgrade pip;
 fi
